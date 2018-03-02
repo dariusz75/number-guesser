@@ -2,6 +2,7 @@
 let min = 1;
 let max = 10;
 let guessesLeft = 3;
+let randomNum = 5;
 
 //UI elements
 const game = document.querySelector('#game');
@@ -20,10 +21,20 @@ guessBtn.addEventListener('click', function(){
 
 	if (!guess) {
 		setMessage('Please entrer your number', 'red')
-	}else if (guess < min || guess > max) {
+	} else if (guess < min || guess > max) {
 		setMessage('Please entrer the number between ' + min +' and ' + max, 'green')
 	} else if (guess && guess >= min && guess <= max) {
+		guessed();
 		console.log(guess);
+		console.log(guessesLeft);
+		guess = guess;
+	}
+
+
+	if (guess == randomNum) {
+		console.log('bingo');
+	} else {
+		console.log('try again');
 	}
 	
 });
@@ -34,3 +45,8 @@ function setMessage(messageText, messageColor) {
 	message.style.color = messageColor;
 }
 
+function guessed() {
+
+	guessesLeft = guessesLeft - 1;
+
+}
