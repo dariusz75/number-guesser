@@ -24,17 +24,19 @@ guessBtn.addEventListener('click', function(){
 	} else if (guess < min || guess > max) {
 		setMessage('Please entrer the number between ' + min +' and ' + max, 'green')
 	} else if (guess && guess >= min && guess <= max) {
-		guessed();
+
+		if (guess == randomNum) {
+			setMessage('You guessed the number! You won the game.');
+		} else {
+			guessed();
+			setMessage('Your guess is ' + guess + '. You have ' + guessesLeft + ' guesses left.');
+		}
+
+		
 		console.log(guess);
 		console.log(guessesLeft);
 		guess = guess;
-	}
-
-
-	if (guess == randomNum) {
-		console.log('bingo');
-	} else {
-		console.log('try again');
+		
 	}
 	
 });
